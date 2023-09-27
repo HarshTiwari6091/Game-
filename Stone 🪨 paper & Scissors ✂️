@@ -1,0 +1,42 @@
+# Rock-paper-scissors game
+import random
+
+# Define the choices and the rules
+choices = ["rock", "paper", "scissors"]
+rules = {"rock": "scissors", "paper": "rock", "scissors": "paper"}
+
+# Initialize the score
+user_score = 0
+computer_score = 0
+
+# Start the game loop
+while True:
+    # Ask the user for their choice
+    user_choice = input("Enter your choice (rock, paper, or scissors): ").lower()
+    
+    # Check if the user wants to quit
+    if user_choice == "quit":
+        break
+    
+    # Validate the user's choice
+    if user_choice not in choices:
+        print("Invalid choice. Please try again.")
+        continue
+    
+    # Generate the computer's choice
+    computer_choice = random.choice(choices)
+    print(f"The computer chose {computer_choice}.")
+    
+    # Compare the choices and declare the winner
+    if user_choice == computer_choice:
+        print("It's a tie.")
+    elif rules[user_choice] == computer_choice:
+        print("You win!")
+        user_score += 1
+    else:
+        print("You lose.")
+        computer_score += 1
+    
+    # Display the score
+    print(f"Your score: {user_score}")
+    print(f"Computer's score: {computer_score}")
